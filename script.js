@@ -3,19 +3,19 @@ let dimensions = 16;
 
 const gridContainer = document.getElementById('grid-container');
 const slider = document.getElementById('slider');
-const val = document.querySelector('.val')
-
-slider.addEventListener('input', () => {
-    dimensions = slider.value;
-    val.textContent = dimensions;
-    clearGrid();
-    gridContainer.setAttribute('style', `grid-template-columns: repeat(${dimensions}, 2fr); grid-template-rows: repeat(${dimensions}, 2fr);`);
-    drawGrid(dimensions);
-});
+const val = document.querySelector('.val');
+const clear = document.querySelector('.clear');
 
 function clearGrid() {
+    const cells = gridContainer.children;
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].style.backgroundColor = 'white';
+    }
+}
+
+function resetGrid() {
     while (gridContainer.hasChildNodes()) {
-        gridContainer.removeChild(gridContainer.lastChild);
+        gridContainer.removeChild(gridContainer.firstChild);
     }
 }
 
@@ -28,5 +28,17 @@ function drawGrid(dimen) {
         gridContainer.appendChild(cell).className = "cell";
     }
 }
+
+slider.addEventListener('input', () => {
+    dimensions = slider.value;
+    val.textContent = dimensions;
+    resetGrid();
+    gridContainer.setAttribute('style', `grid-template-columns: repeat(${dimensions}, 2fr); grid-template-rows: repeat(${dimensions}, 2fr);`);
+    drawGrid(dimensions);
+});
+
+clear.addEventListener('click', () => {
+    clearGrid();
+});
 
 drawGrid(dimensions);
