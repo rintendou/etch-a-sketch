@@ -15,11 +15,14 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    background-color: lightgray;
+    background-color: #676767;
 }
 
 h1 {
     padding: 25px;
+
+    color: #EEC61F;
+    text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
 }
 
 #grid-container {
@@ -28,7 +31,7 @@ h1 {
     grid-template-columns: repeat(16, 2fr);
     grid-template-rows: repeat(16, 2fr);
 
-    border: 3px solid white;
+    border: 3px solid #EEC61F;
     border-radius: 10px;
     box-shadow: 5px 5px;
 
@@ -41,12 +44,31 @@ h1 {
     border: 1px solid black;
 }
 
+#buttons {
+    padding: 25px;
+}
+
+.clear {
+    background-color: #EEC61F;
+    border: 3px solid black;
+    box-shadow: 2px 2px;
+
+    padding: 4px;
+}
+
+.clear:hover {
+    transform: scale(1.05);
+}
+
+.clear:active {
+    transform: scale(1.15);
+}
+
 #input-container {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 20px;
     gap: 16px;
 }
 
